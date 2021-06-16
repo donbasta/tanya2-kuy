@@ -8,22 +8,30 @@ interface IQuestion {
   content: string;
 }
 
+const SOCKET_URL = "http://localhost:3001";
+
 const HostPage = () => {
 
   const [questions, setQuestions] = useState<IQuestion[]>([]);
-  const socket = io();
+  const socket = io(SOCKET_URL);
 
   const renderQuestions = () => {
-    questions.map((question) => {
-      return (
-        <QuestionBox sender={question.sender} content={question.content}/>
-      )
-    })
+    return (
+      questions.map((question, idx) => {
+        return (
+          <QuestionBox key={idx} sender={question.sender} content={question.content}/>
+        )
+      })
+    );
   }
 
-  const appendQuestion = (question: IQuestion) => {
-    setQuestions(q => [...q, question]);
+  const appendQuestion = (newQuestion: IQuestion) => {
+    setQuestions(q => [...q, newQuestion]);
   }
+
+  useEffect(() => {
+    console.log(questions.length, questions);
+  }, [questions])
 
   useEffect(() => {
     socket.on("showQuestion", appendQuestion);
@@ -31,7 +39,8 @@ const HostPage = () => {
 
   return (
     <div>
-      {renderQuestions()};
+      Jumlah pertanyaan saat ini: {questions.length}
+      {renderQuestions()}
     </div>
   );
 }
