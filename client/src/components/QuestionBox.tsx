@@ -8,8 +8,8 @@ interface IQuestion {
 const QuestionBox: FC<IQuestion> = ({ sender, content }) => {
   return (
     <div>
-      <h2>{ sender }</h2>
-      <p>{ content }</p>
+      <p>Pengirim: { sender }</p>
+      <p>Pertanyaan: { content }</p>
     </div>
   )
 }
