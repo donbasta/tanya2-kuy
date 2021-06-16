@@ -1,12 +1,8 @@
-import HostPage from './views/HostPage';
-import AskPage from './views/AskPage';
+import Router from './router/Router';
 
 function App() {
   return (
-    <>
-      <HostPage/>
-      <AskPage/>
-    </>
+    <Router />
   );
 }
 
