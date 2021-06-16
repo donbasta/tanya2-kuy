@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+  </head>
+  <body>
+    <ul id="questions"></ul>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      let socket = io();
+
+      let questions = document.getElementById('questions');
+
+      socket.on('showQuestion', (question) => {
+        let item = document.createElement('li');
+        item.textContent = `From ${question.sender}: ${question.content}`;
+        questions.appendChild(item);
+      });
+    </script>
+  </body>
+</html>
