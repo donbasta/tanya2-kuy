@@ -17,7 +17,9 @@ const QuestionForm: FC<ISubmitForm> = ({ onSubmit }) => {
 
   return (
     <div>
+      Pengirim: 
       <input className="input-message" autoComplete="off" onChange={handleSenderChange} />
+      Pertanyaan:
       <input className="input-message" autoComplete="off" onChange={handleContentChange}/>
       <button onClick={() => onSubmit({sender, content})}>Submit</button>
     </div>
