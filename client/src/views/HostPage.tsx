@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
-
+import { useEffect, useState, useContext } from "react";
+import { SocketContext } from '../context/SocketContext';
 import QuestionBox from "../components/QuestionBox";
 
 interface IQuestion {
@@ -11,7 +10,7 @@ interface IQuestion {
 const HostPage = () => {
 
   const [questions, setQuestions] = useState<IQuestion[]>([]);
-  const socket = io(process.env.REACT_APP_BACKEND as any);
+  const socketCtx = useContext(SocketContext);
 
   const renderQuestions = () => {
     return (
@@ -32,8 +31,8 @@ const HostPage = () => {
   }, [questions])
 
   useEffect(() => {
-    socket.on("showQuestion", appendQuestion);
-  });
+    socketCtx.socket.on("showQuestion", appendQuestion);
+  }, []);
 
   return (
     <div>

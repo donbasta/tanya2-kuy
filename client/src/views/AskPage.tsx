@@ -1,4 +1,5 @@
-import { io } from "socket.io-client";
+import { useContext } from 'react';
+import { SocketContext } from '../context/SocketContext';
 
 import QuestionForm from "../components/QuestionForm";
 
@@ -8,13 +9,13 @@ interface IQuestion {
 }
 
 const AskPage = () => {
-  const socket = io(process.env.REACT_APP_BACKEND as any);
+  const socketCtx = useContext(SocketContext);
 
   const handleSubmit = ({content, sender}: IQuestion) => {
-    console.log("test ke handleSubmit");
-    socket.emit('askQuestion', {
+    socketCtx.socket.emit('askQuestion', {
       content: content,
-      sender: sender
+      sender: sender,
+      uid: socketCtx.socket.id
     })
   }
 
