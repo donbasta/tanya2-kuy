@@ -8,12 +8,10 @@ interface IQuestion {
   content: string;
 }
 
-const SOCKET_URL = "http://localhost:3001";
-
 const HostPage = () => {
 
   const [questions, setQuestions] = useState<IQuestion[]>([]);
-  const socket = io(SOCKET_URL);
+  const socket = io(process.env.REACT_APP_BACKEND as any);
 
   const renderQuestions = () => {
     return (

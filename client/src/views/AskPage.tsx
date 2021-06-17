@@ -2,10 +2,8 @@ import { io } from "socket.io-client";
 
 import QuestionForm from "../components/QuestionForm";
 
-const SOCKET_URL = "http://localhost:3001";
-
 const AskPage = () => {
-  const socket = io(SOCKET_URL);
+  const socket = io(process.env.REACT_APP_BACKEND as any);
 
   const handleSubmit = () => {
     console.log("test ke handleSubmit");
