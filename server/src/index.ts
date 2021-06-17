@@ -6,6 +6,9 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 
+import { connect } from './db/config';
+connect();
+
 const io = new Server(server, {
   cors: true, 
   origins: [process.env.CLIENT_HOST],
