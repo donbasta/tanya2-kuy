@@ -1,11 +1,8 @@
 import { FC } from 'react';
 
-import './QuestionBox.css';
+import { IQuestion } from '../types';
 
-interface IQuestion {
-  sender: string;
-  content: string;
-}
+import './QuestionBox.css';
 
 const QuestionBox: FC<IQuestion> = ({ sender, content }) => {
   return (

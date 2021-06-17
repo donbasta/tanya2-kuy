@@ -2,11 +2,7 @@ import { useContext } from 'react';
 import { SocketContext } from '../context/SocketContext';
 
 import QuestionForm from "../components/QuestionForm";
-
-interface IQuestion {
-  content: string;
-  sender: string;
-}
+import { IQuestion } from '../types';
 
 const AskPage = () => {
   const socketCtx = useContext(SocketContext);

@@ -2,13 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import { SocketContext } from '../context/SocketContext';
 import QuestionBox from "../components/QuestionBox";
 
-interface IQuestion {
-  sender: string;
-  content: string;
-}
+import { IQuestion } from '../types';
 
 const HostPage = () => {
-
   const [questions, setQuestions] = useState<IQuestion[]>([]);
   const socketCtx = useContext(SocketContext);
 

@@ -1,13 +1,6 @@
 import { useState, FC, ChangeEvent } from 'react';
 
-interface IQuestion {
-  sender: string;
-  content: string;
-}
-
-interface ISubmitForm {
-  onSubmit: (arg: IQuestion) => void;
-}
+import { ISubmitForm } from '../types';
 
 const QuestionForm: FC<ISubmitForm> = ({ onSubmit }) => {
 
