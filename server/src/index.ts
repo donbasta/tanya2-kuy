@@ -6,7 +6,7 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 
-import { connect } from './db/config';
+import { connect } from './database/config';
 connect();
 
 const io = new Server(server, {
